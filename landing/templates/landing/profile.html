@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>Bienvenido a tu perfil</h1>
+    <p>¡Hola, {{ request.user.username }}!</p>
+    <p>Aquí puedes mostrar información adicional del usuario, como su nombre, correo electrónico, fecha de registro, etc.</p>
+    <p>¡Personaliza esta plantilla según tus necesidades!</p>
+{% endblock %}

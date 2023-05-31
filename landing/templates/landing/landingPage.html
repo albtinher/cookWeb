@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="container-landing">
+        <div class="left-side">
+            <img src="{% static 'images/LogoRedondo.png' %}" alt="Logo">
+        </div>
+        <div class="right-side">
+            <h1 class="bold-text">Hi 👋🏽</h1>
+            <h1 class="bold-text">I'm CookBlock</h1>
+            <p>Configura tus preferencias de cookies de manera personalizada, mantén el control total y navega con rapidez en cada sitio web que visites.¡No esperes más y únete a nuestra comunidad de usuarios!</p>
+            <br>
+            <br>
+            {% comment %} <input type="email" placeholder="Ingresa tu dirección de correo electrónico"> {% endcomment %}
+            <div class="buttons">
+                <a href="login/" id="btn-transition" class="login-button">INICIAR SESIÓN</a> 
+                <a href="register/" id="btn-transition" class="register-button">REGISTRARSE</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
