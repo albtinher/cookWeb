@@ -9,11 +9,33 @@
 {% endblock %}
 
 {% block content %}
+
+    {% if form.errors %}
+    <div class="alert alert-danger" role="alert">
+    Tu usuario y contraseña no aparecen registrados. Por favor, inténtalo de nuevo
+    </div>
+
+    {% endif %}
+
+    {% if next %}
+        {% if user.is_authenticated %}
+        <p>Your account doesn't have access to this page. To proceed,
+        please login with an account that has access.</p>
+        {% else %}
+        <p>Please login to see this page.</p>
+        {% endif %}
+    {% endif %}
+
+
     <div class="container-landing">
         <div class="left-side">
             <img src="{% static 'images/LogoRedondo.png' %}" alt="Logo">
         </div>
         <div class="right-side">
+            {% if error_message %}
+                <p>{{ error_message }}</p>
+            {% endif %}
+
             <h1 class="bold-text">Hi 👋🏽</h1>
             <h1 class="bold-text">I'm CookBlock</h1>
             <br>

@@ -94,8 +94,8 @@ DATABASES = {
         'NAME': 'cookblock_db',
         'USER': 'cookblock_user',
         'PASSWORD': 'admin',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'HOST': '127.0.0.1',
+        'PORT': '',
     }
 }
 

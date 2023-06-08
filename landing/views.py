@@ -3,26 +3,28 @@ from django.contrib.auth.forms import AuthenticationForm
 from .forms import CustomUserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
+from django.urls import reverse
+from django.contrib import messages
 
 # Create your views here.
 
 def landing_page(request):
     return render(request, 'landing/landingPage.html')
 
+
 def login_view(request):
+    error_message = ''
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
-            email = form.cleaned_data.get('email')
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(email=email, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('profile')
+            user = form.get_user()
+            login(request, user)
+            return redirect('cookweb:mainpage')
+        else:
+            error_message = 'Credenciales inválidas'
     else:
         form = AuthenticationForm()
-    return render(request, 'landing/login.html', {'form': form})
+    return render(request, 'landing/login.html', {'form': form, 'error_message': error_message})
 
 
 
@@ -30,11 +32,15 @@ def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('login')
+            user = form.save()  
+            login(request, user)
+            return redirect('landing:login')  # Redirecciona a la página de inicio de sesión
     else:
         form = CustomUserCreationForm()
     return render(request, 'landing/register.html', {'form': form})
+
+
+
 
 
 @login_required

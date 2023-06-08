@@ -4,6 +4,6 @@ from . import views
 app_name = 'cookweb'
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('mainpage/', views.index, name='mainpage'),
     # Otras rutas URL de la aplicación 'cookweb'
 ]

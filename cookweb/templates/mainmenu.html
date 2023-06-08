@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mainmenu.css' %}">
+{% endblock %}
+
+{% block mainmenu %}
+
+    <nav class="main-menu">
+        <div class="logo">
+        <a href="static/images/logoHori.png"><img src="static/images/logoHori.png" alt="Logo"></a>
+        </div>
+        <ul class="menu-links">
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">ABOUT</a></li>
+        <li><a href="#">CONTACT</a></li>
+        </ul>
+    </nav>
+  
+
+{% endblock %}
