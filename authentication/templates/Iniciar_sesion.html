@@ -1,0 +1,46 @@
+{% extends "landing/login.html" %}
+
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+
+{% endblock %}
+{% block inicio %}
+
+
+<div class="container">
+   
+    
+    
+    {% if messages %}
+    {% for m in messages %}
+    <div class="alert alert-danger alert-dismissible fade show" id="alerta" role="alert">
+      <strong>{{m}}</strong> 
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <div class="formulario">
+        <form style="padding:20px 20px;" class="form-container" action="" method="POST">
+        {% csrf_token %}
+        <div class="form-fields">
+          {% for field in formulario%}
+            <div class="form-field">
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              {{ field }}
+            </div>
+          {% endfor %}
+        {% comment %} {{formulario.as_table}} {% endcomment %}
+        <input type="submit" class="buttons login-button" style="    font-family: 'Montserrat-SemiBold', Arial, Helvetica; height: 44px; width: 164px; line-height:0px;"value="INICIAR SESIÓN">
+        </form>
+    </div>
+ </div>
+
+{% endblock %}
+{% comment %}         <form class="card" style="padding:20px 20px;" action="" method="POST">
+ {% endcomment %}

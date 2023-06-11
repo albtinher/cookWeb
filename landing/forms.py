@@ -1,26 +1,14 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.models import User
+from django.forms import PasswordInput
 
-class CustomUserCreationForm(UserCreationForm):
-    email = forms.EmailField(required=True, label='Email')
-    username = forms.CharField(required=True, label='Username')
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput, required=True)
-    password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput, required=True)
 
-    class Meta:
-        model = User
-        fields = ['email', 'username', 'password1', 'password2']
+class FormularioRegistro(forms.Form):
+    username = forms.CharField(max_length=20, label="Nombre de usuario:")
+    email = forms.EmailField(label="Email")
+    password = forms.CharField(widget=PasswordInput, label="Contraseña", min_length=8)
+    password_repeat = forms.CharField(widget=PasswordInput, label="Repita su contraseña")
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['email'].error_messages = {'required': 'Please enter your email address.'}
-        self.fields['username'].error_messages = {'required': 'Please enter a username.'}
-        self.fields['password1'].error_messages = {'required': 'Please enter a password.'}
-        self.fields['password2'].error_messages = {'required': 'Please confirm your password.'}
+class FormularioAutenticacion(forms.Form):
+    username = forms.CharField(max_length=50, label="Nombre de usuario o Email:")
+    password = forms.CharField(widget=PasswordInput, label="Contraseña", min_length=8)
 
-class FormularioUsuario(AuthenticationForm):
-    username = forms.CharField(label='Username', required=True)
-    password = forms.CharField(label='Password', widget=forms.PasswordInput, required=True)
-    

@@ -6,10 +6,6 @@ from django.contrib import messages
 from datetime import date
 from cookweb.views import home
 
-
-def landing(request):
-    return render(request,'landing/landingPage.html')
-
 def registro(request):
     formulario = FormularioRegistro
     if request.method == 'POST':
@@ -19,26 +15,26 @@ def registro(request):
             passwordrepeat = request.POST.get("password_repeat")
             if(password != passwordrepeat):
                 messages.error(request,'La contraseña y su confirmación no coinciden ')
-                return render(request,'register.html',{'formulario':formulario})
+                return render(request,'Registro.html',{'formulario':formulario})
             username = request.POST.get("username").upper()
             if ' ' in username:
                 messages.error(request,'El nombre de usuario no puede contener espacios')
-                return render(request,'landing/register.html',{'formulario':formulario})
+                return render(request,'Registro.html',{'formulario':formulario})
 
             email = request.POST.get("email")
             if User.objects.filter(email = email).exists():
                 messages.error(request,'Este email ya esta registrado en nuestra base de datos, si ha olvidado su contraseña puede recuperarla.')
-                return render(request,'landing/register.html',{'formulario':formulario})
+                return render(request,'Registro.html',{'formulario':formulario})
             if User.objects.filter(username = username).exists():
                 messages.error(request,'El nombre de usuario' + username + 'ya esta en uso')
-                return render(request,'landing/register.html',{'formulario':formulario})
+                return render(request,'Registro.html',{'formulario':formulario})
            
-            user = User.objects.create_user(username, email, password)
+            user = User.objects.create_user(username,email, password)
             login(request,user)
             user.save()
             return redirect(home)
-        return render(request,'landing/register.html',{'formulario':formulario})
-    return render(request,'landing/register.html',{'formulario':FormularioRegistro})
+        return render(request,'Registro.html',{'formulario':formulario})
+    return render(request,'Registro.html',{'formulario':FormularioRegistro})
 
 def cerrar_sesion(request):
     logout(request)
@@ -70,8 +66,5 @@ def autenticacion(request):
                 return redirect(home)
             else:
                 messages.error(request,'Vaya, las credenciales no son correctas. Si ha olvidado su contraseña puede restaurarla.')
-                return render(request,'landing/login.html',{'formulario':FormularioAutenticacion})
-    return render(request,'landing/login.html',{'formulario':FormularioAutenticacion})
-
-def profile(request):
-    return render(request,'profile.html')   
+                return render(request,'Iniciar_sesion.html',{'formulario':FormularioAutenticacion})
+    return render(request,'Iniciar_sesion.html',{'formulario':FormularioAutenticacion})
