@@ -27,22 +27,9 @@
 </head>
 <body>
 
-    <div id="page-transition" class="page-transition">
-        <div class="content">
-            {% block content %}{% endblock %}
-        </div>
-    </div>    
-    {% comment %} <header>
-        <h1>Logo del Sitio</h1>
-        <nav>
-            <ul>
-                <li><a href="/">Inicio</a></li>
-                <li><a href="/about/">Acerca de</a></li>
-                <!-- Otros enlaces de navegación -->
-            </ul>
-        </nav>
-    </header> {% endcomment %}
-
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
 
     <footer>
         <div class="footer-dark">

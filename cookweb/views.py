@@ -1,5 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 def home(request):
-    return render(request, 'cookweb/index.html')
-
+    return render(request, 'index.html')
