@@ -2,24 +2,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 20px;
-  background-color: #1e1e1e;
-  color: #1e1e1e;
-  padding: 0 20px;
+  /* height: 60px; */
+  background-color: #181818;
+  color: #181818;
+  padding: 0 0px;
 }
 
 .navbar-custom {
-    background-color: #1E1E1E;
+    background-color: #181818;
 }
 
 .navbar-brand {
     display: flex;
     align-items: center;
+    height: 60px;
+    width: 208px;
 }
-/* .navbar-brand img {
-    height: 40px;
-    margin-right: 10px;
-} */
 
 .navbar-logo {
   display: flex;
@@ -32,8 +30,10 @@
 }
 .navbar-links a {
   color: #fff;
-  margin: 0 10px;
+  margin: 0 20px;
   text-decoration: none;
+  height: 60px;
+  width: 208px;
 }
 .navbar-login {
   display: flex;

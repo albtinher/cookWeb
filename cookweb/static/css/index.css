@@ -1,31 +1,23 @@
 body {
-    font-family: 'Montserrat-Regular', Arial, Helvetica;
+    font-family: 'Montserrat-Light', Arial, Helvetica;
 }
 h1 {
-    font-family: 'Montserrat-ExtraBold', Arial, Helvetica;
+    font-family: 'Montserrat-Bold', Arial, Helvetica;
     font-size: 75px;
-    
+}
+h2 {
+    font-size: 45px;
 }
 
-
-.container-web {
-    display: flex;
-    height: 100vh;
-    width: 100vw;
-    padding-right: 0;
-    padding-left: 0;
-
-}
-
-.right-side {
+.left-sidew {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #181818;
+    background-color: #1E1E1E;
 }
 
-.left-side {
+.right-sidew {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -34,10 +26,11 @@ h1 {
     justify-content: center;
     padding-left: 30px;
     padding-right: 30px;
-    background-color: #181818;
-    /* background: linear-gradient(#5b3ef0, #74DFEF); */
+    /* background: linear-gradient(#684cf5, #7b61f7); */
+    background: linear-gradient(#5b3ef0, #74DFEF);
 
 }
+
 
 /* Estilos para el texto y el input */
 .bold-text {

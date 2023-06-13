@@ -8,5 +8,8 @@ from cookweb import views
 urlpatterns = [
     
     path('', views.home, name='home'),
+    path('cookies/', views.cookies, name='cookies'),
+    path('about/', views.about, name='about'),
+
 
 ]
