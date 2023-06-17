@@ -1,6 +1,4 @@
-/* ========== FONT ========== */
-@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
-/* ========== COLOR ========== */
+
 :root {
   --yellow-color: #ecd400;
   --dark-color: #0c0c0c;
@@ -10,15 +8,14 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: "Nunito", sans-serif;
 }
 
-body {
+/* body {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--body-color);
-}
+} */
 
 /* ========== MAIN CSS ========== */
 .wrapper {

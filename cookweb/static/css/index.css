@@ -83,12 +83,19 @@ input {
   }
 
   .dropdown__text {
-    color: black;
     position: relative;
     display: flex;
     justify-content: center;
-  }
-  
+    font-family: 'Montserrat-Regular', Arial, Helvetica;
+  }    
+
+  .dropdown__text__Hi {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat-Medium', Arial, Helvetica;
+  } 
+
   .dropdown__items {
     color: black;
     margin: 0;
@@ -98,7 +105,7 @@ input {
     width: 100%;
     list-style: none;
     list-style-type: none;
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
     visibility: hidden;
     z-index: -1;

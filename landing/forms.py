@@ -4,6 +4,8 @@ from django.forms import PasswordInput
 
 class FormularioRegistro(forms.Form):
     username = forms.CharField(max_length=20, label="Nombre de usuario:")
+    name = forms.CharField(max_length=50, label="Nombre:")
+    surname = forms.CharField(max_length=50, label="Apellidos:")
     email = forms.EmailField(label="Email")
     password = forms.CharField(widget=PasswordInput, label="Contraseña", min_length=8)
     password_repeat = forms.CharField(widget=PasswordInput, label="Repita su contraseña")

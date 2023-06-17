@@ -39,13 +39,13 @@
                 <div class="dropdown">
                   <input type="checkbox" id="dropdown">
                   <label class="dropdown__face" for="dropdown">
-                    <div class="dropdown__text">Hi, {{ request.user.username }}</div>
+                    <div class="dropdown__text__Hi">Hi, {{ request.user.username }}</div>
                     <div class="dropdown__arrow"></div>
                   </label>
                   <ul class="dropdown__items">
-                    <li><div><a class="dropdown__text" href="{% url 'profile' %}">Mi Perfil</a></div></li>
+                    <li><div><a class="dropdown__text" style="color:black; padding: 10px;" href="{% url 'profile' %}">Mi Perfil🤗</a></div></li>
                     {% comment %} <li>😺</li> {% endcomment %}
-                    <li><div><a class="dropdown__text" href="{% url 'LogOutPage' %}">Cerrar Sesión</a></div></li>
+                    <li><div><a class="dropdown__text" style="color:#AB2346; padding: 10px;" href="{% url 'LogOutPage' %}">Cerrar Sesión</a></div></li>
                     {% comment %} <li>😎</li>
                     <li>🤗</li> {% endcomment %}
                   </ul>

@@ -9,6 +9,8 @@
 {% block content %}
 
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/card.css' %}">
+
 
 <div class="container-web"  >
 
@@ -16,10 +18,28 @@
     <p>¡Hola, {{ request.user.username }}!</p>
     <p>Aquí puedes mostrar información adicional del usuario, como su nombre, correo electrónico, fecha de registro, etc.</p>
     <p>¡Personaliza esta plantilla según tus necesidades!</p>
+   
+    <div class="wrapper">
+        <div class="image_box">
+          <img src="images/karim.png" alt="" />
+        </div>
+        <div class="content_box">
+          <h1>Karim Benzema</h1>
+          <p>
+            In this channel there are many projects about HTML, CSS and
+            JavaScript. We create many different projects about front-end
+            programming for you
+          </p>
+          <button>Click Now</button>
+          <div class="social_box">
+            <i class="bx bxl-facebook-circle"></i>
+            <i class="bx bxl-linkedin-square"></i>
+            <i class="bx bxl-instagram-alt"></i>
+          </div>
+        </div>
+      </div>
     
 </div>
-    {% block card %}
 
-    {% endblock %}
 
 {% endblock %}
