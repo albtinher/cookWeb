@@ -4,10 +4,11 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: #1e1e1e;
   }
   .card {
     background-color: #fff;
-    padding: 20px;
+    padding: 40px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
@@ -93,7 +94,7 @@
 
   .btn-submit {
     background-color: #4caf50;
-    color: #fff;
+    color: #000000;
     border: none;
     padding: 10px 20px;
     font-size: 16px;

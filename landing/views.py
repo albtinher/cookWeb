@@ -74,6 +74,6 @@ def auth(request):
     return render(request,'login.html',{'formulario':FormularioAutenticacion})
 
 
-def logout(request):
+def authOut(request):
     logout(request)
     return redirect(home)

@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/mainmenu.css'%}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
 
 
 </head>
@@ -19,7 +20,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom" style="background-color:#181818; height: 80px;">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'home' %}">
-                <img src="{% static 'images/logoHori.png' %}" alt="Logo" height="60" width="200px">
+                <img src="{% static 'images/logoHori.png' %}" alt="Logo" height="60" width="230px">
             </a>
             <div class="collapse navbar-collapse justify-content-center">
                 <ul class="navbar-nav">
@@ -34,9 +35,30 @@
                     </li>
                 </ul>
             </div>
-            <div class="navbar-text" style="height=60; width=200px;">
-                <a class="nav-link" href="#" style="height=60; width=200px;">Iniciar sesión</a>
-            </div>
+            <div class="navbar-text" style="height: 60px; width: 230px; margin-right: 10px; margin-left: 40px;color: black;">
+                <div class="dropdown">
+                  <input type="checkbox" id="dropdown">
+                  <label class="dropdown__face" for="dropdown">
+                    <div class="dropdown__text">Hi, {{ request.user.username }}</div>
+                    <div class="dropdown__arrow"></div>
+                  </label>
+                  <ul class="dropdown__items">
+                    <li><div><a class="dropdown__text" href="{% url 'profile' %}">Mi Perfil</a></div></li>
+                    {% comment %} <li>😺</li> {% endcomment %}
+                    <li><div><a class="dropdown__text" href="{% url 'LogOutPage' %}">Cerrar Sesión</a></div></li>
+                    {% comment %} <li>😎</li>
+                    <li>🤗</li> {% endcomment %}
+                  </ul>
+                </div>
+              </div>
+              <svg>
+                <filter id="goo">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                  <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                  <feBlend in="SourceGraphic" in2="goo" />
+                </filter>
+              </svg>
+              
         </div>
     </nav>
 
@@ -69,7 +91,7 @@
                         </div>
                         <div class="col-md-6 item text">
                             <h3>CookBlock</h3>
-                            <p>Descubre una experiencia web libre de interrupciones y preocupaciones con nuestra extensión. Simplifica la configuración de cookies, protege tu privacidad y obtén información detallada sobre cada cookie que recibes. ¡No esperes más y únete a nuestra comunidad de usuarios satisfechos!</p>
+                            <p>Descubre una experiencia web libre de interrupciones y preocupaciones con nuestra extensión. Simplifica la configuración de cookies, protege tu privacidad y obtén información detallada sobre cada cookie que recibes. ¡No esperes más y únete a nuestra comunidad de usuarios!</p>
                         </div>
                         <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
                     </div>

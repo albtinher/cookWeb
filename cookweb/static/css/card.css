@@ -1,0 +1,95 @@
+/* ========== FONT ========== */
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+/* ========== COLOR ========== */
+:root {
+  --yellow-color: #ecd400;
+  --dark-color: #0c0c0c;
+  --body-color: #d8d8d8;
+}
+/* ========== DEFAULT ========== */
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--body-color);
+}
+
+/* ========== MAIN CSS ========== */
+.wrapper {
+  width: 400px;
+  border-radius: 25px;
+  background-color: white;
+}
+
+.image_box {
+  background-color: var(--yellow-color);
+  width: 100%;
+  border-radius: 25px 25px 30px 30px;
+  position: relative;
+  height: 200px;
+}
+
+.image_box img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 7px solid white;
+  position: absolute;
+  top: 100;
+  left: 120;
+}
+
+.content_box {
+  padding: 15px;
+  margin-top: 60px;
+}
+
+.content_box h1,
+p {
+  text-align: center;
+  padding: 10px 0px;
+}
+
+button {
+  border: none;
+  outline: none;
+  background-color: var(--yellow-color);
+  padding: 10px 0px;
+  font-size: 20px;
+  font-weight: 600;
+  width: 250px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.4s;
+  margin-left: 55px;
+}
+
+button:hover {
+  background-color: var(--dark-color);
+  color: var(--yellow-color);
+}
+
+.social_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 35px;
+}
+
+.social_box i {
+  font-size: 30px;
+  margin: 0px 5px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.social_box i:hover {
+  transform: rotate(30deg);
+  color: var(--yellow-color);
+}

@@ -1,0 +1,33 @@
+{% extends 'profile.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/card.css' %}">
+{% endblock %}
+
+
+{% block card %}
+
+    <!-- ========== PROFILE CARD ========== -->
+    <div class="wrapper">
+      <div class="image_box">
+        <img src="images/karim.png" alt="" />
+      </div>
+      <div class="content_box">
+        <h1>Karim Benzema</h1>
+        <p>
+          In this channel there are many projects about HTML, CSS and
+          JavaScript. We create many different projects about front-end
+          programming for you
+        </p>
+        <button>Click Now</button>
+        <div class="social_box">
+          <i class="bx bxl-facebook-circle"></i>
+          <i class="bx bxl-linkedin-square"></i>
+          <i class="bx bxl-instagram-alt"></i>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
