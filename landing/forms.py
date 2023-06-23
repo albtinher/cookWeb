@@ -1,5 +1,7 @@
 from django import forms
 from django.forms import PasswordInput
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.models import User
 
 
 class FormularioRegistro(forms.Form):

@@ -1,0 +1,51 @@
+.container-websites {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1e1e1e;
+}
+
+.container-websites h1 {
+    font-size: 40px;
+    color: white;
+    text-align: center;
+}
+
+.container-websites .formUrls {
+    margin-top: 20px;
+}
+
+.container-websites form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-websites form input[type="text"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.container-websites form button[type="submit"] {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.container-websites ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.container-websites ul li {
+    margin-bottom: 5px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+}

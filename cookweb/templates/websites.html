@@ -1,0 +1,53 @@
+{% extends 'bass.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/websites.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Agregar input
+            $('#addUrl').click(function(e) {
+                e.preventDefault();
+                var inputCount = $('.urlInput').length;
+                var newInput = '<div class="urlInputDiv"><input type="text" class="urlInput" name="url_' + inputCount + '"><button type="button" class="removeUrl">Eliminar</button></div>';
+                $('.urlInputs').append(newInput);
+            });
+
+            // Eliminar input
+            $(document).on('click', '.removeUrl', function() {
+                $(this).closest('.urlInputDiv').remove();
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="container-websites">
+        <h1>Sitios Webs Permitidos</h1>
+
+        <div class="formUrls">
+            <form method="post">
+                {% csrf_token %}
+                <div class="urlInputs">
+                    <div class="urlInputDiv">
+                        <input type="text" class="urlInput" name="url_0">
+                        <button type="button" class="removeUrl">Eliminar</button>
+                    </div>
+                </div>
+                <button id="addUrl" type="button">Agregar URL</button>
+                <button type="submit">Guardar URLs</button>
+            </form>
+
+            <ul>
+                {% for url in urls %}
+                    <li>{{ url.url }}</li>
+                {% empty %}
+                    <li>No se han agregado URLs</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

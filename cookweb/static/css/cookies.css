@@ -105,4 +105,11 @@
     background-color: #45a049;
   }
 
-  
+  form p {
+    color: black;
+  }
+
+  form input {
+      color: black;
+      display: -webkit-inline-box;
+    }

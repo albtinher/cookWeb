@@ -15,7 +15,7 @@
             <img src="{% static 'images/LogoRedondo.png' %}" alt="Logo">
         </div>
         <div class="right-side">
-            {% if messages %}
+            {% if messages and request.path == '/auth/' %}
             {% for m in messages %}
             <div class="alert alert-danger alert-dismissible fade show" id="alerta" role="alert">
               <strong>{{m}}</strong> 

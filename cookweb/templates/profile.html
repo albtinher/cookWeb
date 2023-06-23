@@ -9,37 +9,27 @@
 {% block content %}
 
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
-<link rel="stylesheet" href="{% static 'css/card.css' %}">
+<link rel="stylesheet" href="{% static 'css/cookies.css' %}">
 
-
-<div class="container-web"  >
-
-    <h1>Bienvenido a tu perfil</h1>
-    <p>¡Hola, {{ request.user.username }}!</p>
-    <p>Aquí puedes mostrar información adicional del usuario, como su nombre, correo electrónico, fecha de registro, etc.</p>
-    <p>¡Personaliza esta plantilla según tus necesidades!</p>
    
-    <div class="wrapper">
-        <div class="image_box">
-          <img src="images/karim.png" alt="" />
-        </div>
-        <div class="content_box">
-          <h1>Karim Benzema</h1>
-          <p>
-            In this channel there are many projects about HTML, CSS and
-            JavaScript. We create many different projects about front-end
-            programming for you
-          </p>
-          <button>Click Now</button>
-          <div class="social_box">
-            <i class="bx bxl-facebook-circle"></i>
-            <i class="bx bxl-linkedin-square"></i>
-            <i class="bx bxl-instagram-alt"></i>
-          </div>
-        </div>
+    <div class="container-cookies">
+      <div class="card">
+        <h1 style="font-size:40px;">¡Bienvenido a tu perfil, {{ request.user.username }}!</h1>
+        <p style="color:black;">Aquí puedes encontrar toda tu información como usuario:</p>
+        <p style="color:black;"> User Name: {{request.user.username}}</p>
+        <p style="color:black;"> Nombre: {{request.user.first_name}}</p>
+        <p style="color:black;"> Apellidos: {{request.user.last_name}}</p>
+        <p style="color:black;"> Dirección de correo electronico: {{request.user.email}}</p>
+        <br>
+        <br>
+          <a href="{% url 'edit_profile' %}">Editar perfil</a>
+          <a href="{% url 'configuraciones' %}">Gestionar Configuraciones</a>
+          <a href="{% url 'LogOutPage' %}">Cerrar sesión</a>
+        <br>
+        <br>
+
       </div>
-    
-</div>
+    </div>
 
 
 {% endblock %}

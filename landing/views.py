@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from .forms import FormularioRegistro, FormularioAutenticacion
 from django.contrib.auth.models import User
 from cookweb.views import home
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 from django.contrib import messages
 from datetime import date
+from django.contrib.auth.decorators import login_required
 
 
 def landing(request):
