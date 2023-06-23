@@ -1,14 +1,14 @@
-from django.urls import include, path
-from django.conf.urls.static import static
-from cookblock import settings
-from . import views
+from django.contrib import admin
+from django.urls import path, include
+from django.contrib.auth import views as auth_views
 
-app_name = "landing"
+from landing import views
 
 urlpatterns = [
-    path('', views.landing, name='landing_page'),
-    path('autenticacion/', views.autenticacion, name='login'),
-    path('registro/', views.registro, name='registro'),
-    path('profile/', views.profile, name='profile'),
     
-] 
+    path('', views.landing, name='MainPage'),
+    path('auth/', views.auth, name='AuthPage'),
+    path('auth/register/', views.register, name='RegisterPage'),
+    path('auth/logout/', views.authOut, name='LogOutPage'),
+
+]

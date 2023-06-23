@@ -10,30 +10,20 @@
 
 {% block content %}
 
-    {% if form.errors %}
-    <div class="alert alert-danger" role="alert">
-    Tu usuario y contraseña no aparecen registrados. Por favor, inténtalo de nuevo
-    </div>
-
-    {% endif %}
-
-    {% if next %}
-        {% if user.is_authenticated %}
-        <p>Your account doesn't have access to this page. To proceed,
-        please login with an account that has access.</p>
-        {% else %}
-        <p>Please login to see this page.</p>
-        {% endif %}
-    {% endif %}
-
-
     <div class="container-landing">
         <div class="left-side">
             <img src="{% static 'images/LogoRedondo.png' %}" alt="Logo">
         </div>
         <div class="right-side">
-            {% if error_message %}
-                <p>{{ error_message }}</p>
+            {% if messages and request.path == '/auth/' %}
+            {% for m in messages %}
+            <div class="alert alert-danger alert-dismissible fade show" id="alerta" role="alert">
+              <strong>{{m}}</strong> 
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {% endfor %}
             {% endif %}
 
             <h1 class="bold-text">Hi 👋🏽</h1>
@@ -50,8 +40,7 @@
                       {{ field }}
                     </div>
                   {% endfor %}
-                {% comment %} {{formulario.as_table}} {% endcomment %}
-                <input type="submit" class="buttons login-button" style="    font-family: 'Montserrat-SemiBold', Arial, Helvetica; height: 44px; width: 164px; line-height:0px;"value="INICIAR SESIÓN">
+                <input type="submit" class="buttons login-button" style="font-family: 'Montserrat-SemiBold', Arial, Helvetica; height: 44px; width: 164px; line-height:0px;" value="INICIAR SESIÓN">
                 </form>
             </div>
         </div>

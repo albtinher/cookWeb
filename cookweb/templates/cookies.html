@@ -1,0 +1,113 @@
+{% extends 'bass.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/cookies.css' %}">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+<div class="container-cookies">
+  <div class="card">
+    <h1>Configuración de Cookies</h1>
+    <br>
+    <br>
+    
+    <form id="cookie-form">
+      <div class="cookie-row">
+        <span class="cookie-name">Cookies Esenciales</span>
+        <div class="option-label">
+          <label class="switch">
+            <input type="checkbox" checked disabled style="background-color: #4caf50;">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+      
+      <div class="cookie-row">
+        <span class="cookie-name">Cookies de Preferencias</span>
+        <div class="option-label">
+          <label class="switch">
+            <input type="checkbox" name="preferencias" value="preferencias" checked>
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="cookie-row">
+        <span class="cookie-name">Cookies de Rendimiento</span>
+        <div class="option-label">
+          <label class="switch">
+            <input type="checkbox" name="preferencias" value="preferencias" checked>
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="cookie-row">
+        <span class="cookie-name">Cookies de Análisis</span>
+        <div class="option-label">
+          <label class="switch">
+            <input type="checkbox" name="preferencias" value="preferencias" checked>
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="cookie-row">
+        <span class="cookie-name">Cookies de Publicidad</span>
+        <div class="option-label">
+          <label class="switch">
+            <input type="checkbox" name="preferencias" value="preferencias" checked>
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="cookie-row">
+        <span class="cookie-name">Cookies de Redes Sociales</span>
+        <div class="option-label">
+          <label class="switch">
+            <input type="checkbox" name="preferencias" value="preferencias" checked>
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+
+
+      <br>
+      
+      <button type="submit" class="btn-submit">Guardar configuración</button>
+      <a href="{% url 'generar_deshabilitacion_cookies' %}" download="deshabilitar_cookies.js">Descargar archivo de deshabilitación de cookies</a>
+    </form>
+    
+  </div>
+</div>
+
+<script>
+  var form = document.getElementById('cookie-form');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+    var preferenciasCheckbox = document.querySelectorAll('input[name="preferencias"]:checked');
+    var preferenciasSeleccionadas = Array.from(preferenciasCheckbox).map(function(checkbox) {
+      return checkbox.value;
+    });
+
+    guardarPreferenciasCookies(preferenciasSeleccionadas);
+
+    alert('¡Configuración de cookies guardada con éxito!');
+  });
+
+  function guardarPreferenciasCookies(preferencias) {
+    var preferenciasJSON = JSON.stringify(preferencias);
+
+    document.cookie = "preferenciasCookies=" + preferenciasJSON + "; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
+  }
+</script>
+
+{% endblock %}
