@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'cookblock'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_166F7766882540D89616D9C1352023EE }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_83788BAE152E4988ADF97954D1AB440F }}
