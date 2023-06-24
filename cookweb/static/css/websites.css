@@ -16,7 +16,13 @@
 }
 
 .container-websites form {
-    display: flex;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+}
+
+.urlInputDiv{
+    display: flex !important;
     flex-direction: column;
     align-items: center;
 }
@@ -48,4 +54,5 @@
     background-color: white;
     padding: 5px;
     border-radius: 5px;
+    width: 80vh;
 }

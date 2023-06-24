@@ -142,9 +142,9 @@ input {
     transform-origin: right;
   }
   
-  input {
+  /* input {
     display: none;
-  }
+  } */
   
   input:checked ~ .dropdown__items {
     top: calc(100% + 25px);

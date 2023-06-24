@@ -12,7 +12,7 @@
             $('#addUrl').click(function(e) {
                 e.preventDefault();
                 var inputCount = $('.urlInput').length;
-                var newInput = '<div class="urlInputDiv"><input type="text" class="urlInput" name="url_' + inputCount + '"><button type="button" class="removeUrl">Eliminar</button></div>';
+                var newInput = '<div class="urlInputDiv" style="display: flex !important;"><input type="text" class="urlInput" name="url_' + inputCount + '" placeholder="Ingrese una URL"><button type="button" class="removeUrl">Eliminar</button></div>';
                 $('.urlInputs').append(newInput);
             });
 
@@ -31,11 +31,17 @@
         <div class="formUrls">
             <form method="post">
                 {% csrf_token %}
-                <div class="urlInputs">
-                    <div class="urlInputDiv">
-                        <input type="text" class="urlInput" name="url_0">
-                        <button type="button" class="removeUrl">Eliminar</button>
-                    </div>
+                <div class="urlInputs" >
+                    {% for field in form %}
+                        <div class="urlInputDiv">
+                            {{ field.label_tag }}
+                            {{ field }}
+                            {% if field.errors %}
+                                <span class="text-danger">{{ field.errors|join:", " }}</span>
+                            {% endif %}
+                            <button type="button" class="removeUrl">Eliminar</button>
+                        </div>
+                    {% endfor %}
                 </div>
                 <button id="addUrl" type="button">Agregar URL</button>
                 <button type="submit">Guardar URLs</button>
@@ -43,7 +49,7 @@
 
             <ul>
                 {% for url in urls %}
-                    <li>{{ url.url }}</li>
+                    <li>{{ url.url }} </li>
                 {% empty %}
                     <li>No se han agregado URLs</li>
                 {% endfor %}
