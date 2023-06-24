@@ -11,6 +11,7 @@ urlpatterns = [
     path('cookies/', views.cookies, name='cookies'),
     path('about/', views.about, name='about'),
     path('websites/', views.websites, name='websites'),
+    path('delete_website/<int:id>/', views.delete_website, name='delete_website'),
     path('profile/', views.profile, name='profile'),
     path('profile/edit/', views.edit_profile, name='edit_profile'),
     path('profile/config/', views.configuraciones, name='configuraciones'),

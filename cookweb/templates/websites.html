@@ -8,13 +8,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            // Agregar input
-            $('#addUrl').click(function(e) {
-                e.preventDefault();
-                var inputCount = $('.urlInput').length;
-                var newInput = '<div class="urlInputDiv" style="display: flex !important;"><input type="text" class="urlInput" name="url_' + inputCount + '" placeholder="Ingrese una URL"><button type="button" class="removeUrl">Eliminar</button></div>';
-                $('.urlInputs').append(newInput);
-            });
 
             // Eliminar input
             $(document).on('click', '.removeUrl', function() {
@@ -29,27 +22,20 @@
         <h1>Sitios Webs Permitidos</h1>
 
         <div class="formUrls">
-            <form method="post">
+            <form method="post" action="{% url 'websites' %}">
                 {% csrf_token %}
-                <div class="urlInputs" >
-                    {% for field in form %}
-                        <div class="urlInputDiv">
-                            {{ field.label_tag }}
-                            {{ field }}
-                            {% if field.errors %}
-                                <span class="text-danger">{{ field.errors|join:", " }}</span>
-                            {% endif %}
-                            <button type="button" class="removeUrl">Eliminar</button>
-                        </div>
-                    {% endfor %}
-                </div>
-                <button id="addUrl" type="button">Agregar URL</button>
-                <button type="submit">Guardar URLs</button>
+                {{ form.as_p }}
+                <button type="submit">Guardar URL</button>
             </form>
+            
 
             <ul>
                 {% for url in urls %}
                     <li>{{ url.url }} </li>
+                    <form method="post" action="{% url 'delete_website' url.id %}">
+                        {% csrf_token %}
+                        <input type="submit" value="Eliminar">
+                    </form>
                 {% empty %}
                     <li>No se han agregado URLs</li>
                 {% endfor %}

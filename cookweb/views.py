@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
@@ -97,26 +97,17 @@ def generar_archivo_deshabilitacion(request):
 
 
 #WEBSITES
-def url_list(request):
-    if request.method == 'POST':
-        form = URLForm(request.POST)
-        if form.is_valid():
-            form.save()
-            form = URLForm()  # Limpiar el formulario después de guardar la URL
-    else:
-        form = URLForm()
 
-    urls = URL.objects.all()
-    return render(request, 'websites.html', {'form': form, 'urls': urls})
-
-
+@login_required
 def websites(request):
     form = URLForm(request.POST or None)
-    urls = URL.objects.all()
+    urls = URL.objects.filter(user=request.user)
     
     if request.method == 'POST':
         if form.is_valid():
-            form.save()
+            url = form.save(commit=False)
+            url.user = request.user
+            url.save()
             return redirect('websites')
     
     context = {
@@ -124,3 +115,18 @@ def websites(request):
         'urls': urls
     }
     return render(request, 'websites.html', context)
+
+@login_required
+def delete_website(request, id):
+    
+    if(request.method == 'POST'):
+        user = request.user
+        url = get_object_or_404(URL, id=id)
+        url.delete()
+        return redirect('websites')
+    
+    return render(request, 'websites.html')
+
+
+
+
