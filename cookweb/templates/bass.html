@@ -37,6 +37,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'websites' %}">Sitios Webs</a>
                     </li>
+                    {% if user.is_authenticated and user.is_staff %}
+                        <li><a href="{% url 'admin:index' %}">Administrador</a></li>
+                    {% endif %}
                 </ul>
             </div>
             <div class="navbar-text" style="height: 60px; width: 230px; margin-right: 10px; margin-left: 40px;color: black;">

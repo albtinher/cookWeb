@@ -16,6 +16,7 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('profile/edit/', views.edit_profile, name='edit_profile'),
     path('profile/config/', views.configuraciones, name='configuraciones'),
+    path('aprofile/config/activo/<int:configuracion_id>/', views.post_activo, name='activar_desactivar'),
     path('generar-deshabilitacion-cookies/', views.generar_archivo_deshabilitacion, name='generar_deshabilitacion_cookies'),
 
 

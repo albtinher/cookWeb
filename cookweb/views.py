@@ -66,6 +66,19 @@ def configuraciones(request):
     configuraciones = ConfiguracionCookie.objects.filter(user=request.user)
     return render(request, 'configuraciones.html', {'configuraciones': configuraciones})
 
+def post_activo(request, configuracion_id):
+    configuracion = ConfiguracionCookie.objects.get(id=configuracion_id)
+    action = request.POST.get('action')
+
+    if action == 'activar':
+        configuracion.activo = True
+    elif action == 'desactivar':
+        configuracion.activo = False
+
+    configuracion.save()
+
+    return redirect('configuraciones')
+
 
 
 @login_required

@@ -6,7 +6,7 @@ from django.contrib import admin
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
     path('', include('landing.urls')),
     path('cookweb/', include('cookweb.urls')),
     path('accounts/', include('django.contrib.auth.urls')),

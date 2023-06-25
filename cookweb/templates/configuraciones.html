@@ -15,16 +15,27 @@
     <br>
     <br>
 
-    <ul>
-        {% for configuracion in configuraciones %}
-        <li>{{ configuracion.nombre }}</li>
+    {% for configuracion in configuraciones %}
+    <div>
+        <h3>{{ configuracion.nombre }} </h3>
+        <p>Categorías activas:</p>
         <ul>
-            {% for cookie in configuracion.preferencias.all %}
-            <li>{{ cookie.nombre }}: {{ cookie.valor }}</li>
-            {% endfor %}
+          {% for categoria in configuracion.categoriasActivas.all %}
+            <li>{{ categoria.nombre }}</li>
+          {% endfor %}
         </ul>
-        {% endfor %}
-    </ul>
+
+        <form action="{% url 'activar_desactivar' configuracion.id %}" method="post">
+        {% csrf_token %}
+        {% if configuracion.activo %}
+            <button type="submit" name="action" value="desactivar">Desactivar</button>
+        {% else %}
+            <button type="submit" name="action" value="activar">Activar</button>
+        {% endif %}
+        </form>
+    </div>
+    {% endfor %}
+
     
     {% comment %} <form id="cookieForm">
         <h2>Cookies Generales</h2>

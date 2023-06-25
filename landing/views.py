@@ -18,7 +18,7 @@ def register(request):
     if request.method == 'POST':
         formulario = FormularioRegistro(data = request.POST)
         if formulario.is_valid():
-            username = formulario.cleaned_data.get("username").upper()
+            username = formulario.cleaned_data.get("username")
             name = formulario.cleaned_data.get("name")
             surname = formulario.cleaned_data.get("surname")
             email = formulario.cleaned_data.get("email")
@@ -70,8 +70,8 @@ def auth(request):
                 else:
                     user_object = None
             else:
-                if User.objects.filter(username = username.upper()).exists():
-                    user_object = authenticate(username = username.upper(), password = contra)
+                if User.objects.filter(username = username).exists():
+                    user_object = authenticate(username = username, password = contra)
                 else:
                     user_object = None
             
