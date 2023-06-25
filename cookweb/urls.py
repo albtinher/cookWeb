@@ -8,7 +8,7 @@ from cookweb import views
 urlpatterns = [
     
     path('', views.home, name='home'),
-    path('cookies/', views.getCategorias, name='cookies'),
+    path('config/', views.getCategorias, name='cookies'),
     path('about/', views.about, name='about'),
     path('configCreada/', views.post_configuraciones, name='configuracion_cookie_create'),
     path('websites/', views.websites, name='websites'),
