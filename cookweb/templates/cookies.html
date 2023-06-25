@@ -10,83 +10,23 @@
 <link rel="stylesheet" href="{% static 'css/cookies.css' %}">
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
 
-<div class="container-cookies">
-  <div class="card">
-    <h1>Configuración de Cookies</h1>
-    <br>
-    <br>
-    
-    <form id="cookie-form">
-      <div class="cookie-row">
-        <span class="cookie-name">Cookies Esenciales</span>
-        <div class="option-label">
-          <label class="switch">
-            <input type="checkbox" checked disabled style="background-color: #4caf50;">
-            <span class="slider round"></span>
-          </label>
-        </div>
-      </div>
-      
-      <div class="cookie-row">
-        <span class="cookie-name">Cookies de Preferencias</span>
-        <div class="option-label">
-          <label class="switch">
-            <input type="checkbox" name="preferencias" value="preferencias" checked>
-            <span class="slider round"></span>
-          </label>
-        </div>
-      </div>
-
-      <div class="cookie-row">
-        <span class="cookie-name">Cookies de Rendimiento</span>
-        <div class="option-label">
-          <label class="switch">
-            <input type="checkbox" name="preferencias" value="preferencias" checked>
-            <span class="slider round"></span>
-          </label>
-        </div>
-      </div>
-
-      <div class="cookie-row">
-        <span class="cookie-name">Cookies de Análisis</span>
-        <div class="option-label">
-          <label class="switch">
-            <input type="checkbox" name="preferencias" value="preferencias" checked>
-            <span class="slider round"></span>
-          </label>
-        </div>
-      </div>
-
-      <div class="cookie-row">
-        <span class="cookie-name">Cookies de Publicidad</span>
-        <div class="option-label">
-          <label class="switch">
-            <input type="checkbox" name="preferencias" value="preferencias" checked>
-            <span class="slider round"></span>
-          </label>
-        </div>
-      </div>
-
-      <div class="cookie-row">
-        <span class="cookie-name">Cookies de Redes Sociales</span>
-        <div class="option-label">
-          <label class="switch">
-            <input type="checkbox" name="preferencias" value="preferencias" checked>
-            <span class="slider round"></span>
-          </label>
-        </div>
-      </div>
-
-
+<body>
+  <h1>Agregar configuración de cookies</h1>
+  <form method="POST" action="{% url 'configuracion_cookie_create' %}">
+      {% csrf_token %}
+      <label for="nombre">Nombre de la configuración:</label>
+      <input type="text" name="nombre" id="nombre" required>
       <br>
-      
-      <button type="submit" class="btn-submit">Guardar configuración</button>
-      <a href="{% url 'generar_deshabilitacion_cookies' %}" download="deshabilitar_cookies.js">Descargar archivo de deshabilitación de cookies</a>
-    </form>
-    
-  </div>
-</div>
-
+      <label for="categorias">Categorías activas:</label>
+      <br>
+      {% for categoria in categorias %}
+          <input type="checkbox" name="categorias" value="{{ categoria.id }}">{{ categoria.nombre }}
+          <br>
+      {% endfor %}
+      <br>
+      <button type="submit">Guardar configuración</button>
+  </form>
+</body>
 <script>
   var form = document.getElementById('cookie-form');
 

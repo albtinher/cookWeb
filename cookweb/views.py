@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserProfileForm, ChangePasswordForm, CookieConfigurationForm, URLForm
 from django.http import HttpResponse
-from .models import ConfiguracionCookie, URL
+from .models import CategoriaCookie, ConfiguracionCookie, URL
 
 
 def home(request):
@@ -61,25 +61,38 @@ def edit_profile(request):
 
     return render(request, 'edit_profile.html', {'form': form, 'password_form': password_form})
 
-
+@login_required
 def configuraciones(request):
-    configuraciones = ConfiguracionCookie.objects.all()
+    configuraciones = ConfiguracionCookie.objects.filter(user=request.user)
     return render(request, 'configuraciones.html', {'configuraciones': configuraciones})
 
 
 
-def cookie_configuration_view(request):
-    if request.method == 'POST':
-        form = CookieConfigurationForm(request.POST)
-        if form.is_valid():
-            form.save()
-    else:
-        form = CookieConfigurationForm()
+@login_required
+def post_configuraciones(request):
+    # Obtener los datos del formulario HTML
+    nombre = request.POST['nombre']
+    categorias_seleccionadas = request.POST.getlist('categorias')
 
-    configuraciones = ConfiguracionCookie.objects.all()
+    # Obtener el usuario logueado
+    user = request.user
 
-    return render(request, 'configuracioncookies/cookie_configuration.html', {'form': form, 'configuraciones': configuraciones})
+    # Crear una nueva instancia de ConfiguracionCookie
+    configuracion_cookie = ConfiguracionCookie(nombre=nombre, user=user)
+    configuracion_cookie.save()
 
+    # Agregar las categorias seleccionadas a la configuracion_cookie
+    for categoria_id in categorias_seleccionadas:
+        categoria = CategoriaCookie.objects.get(id=categoria_id)
+        configuracion_cookie.categoriasActivas.add(categoria)
+
+    # Redirigir a la página deseada después de guardar los datos
+    return redirect('cookies')
+
+def getCategorias(request):
+    # Renderizar el formulario HTML para la selección de categorías
+    categorias = CategoriaCookie.objects.all()
+    return render(request, 'cookies.html', {'categorias': categorias})
 
 def generar_archivo_deshabilitacion(request):
     preferencias = request.session.get('preferenciasCookies')
