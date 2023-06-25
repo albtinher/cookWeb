@@ -1,0 +1,71 @@
+{% extends 'bass.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/cookies.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+<body>
+  <div class="container-cookies">
+    <div class="card">
+      <h1 style="font-size: 45px;">Agregar configuración de cookies</h1>
+      <br>
+      <p style="color:black;">Seleccione las categorías que desea que estén activas en esta configuración de cookies.</p>
+      <form method="POST" action="{% url 'configuracion_cookie_create' %}" style="align-items:center;">
+        {% csrf_token %}
+        <div class="cookie-row">
+          <label for="nombre" class="cookie-name" style="font-family:Montserrat-Bold;color:black;" >Nombre de la configuración:</label>
+          <input class="input-config" type="text" name="nombre" id="nombre" placeholder="Inserte nombre..."required>
+        </div>
+        <br>
+        <label for="categorias" style="font-family:Montserrat-Bold;">Categorías activas:</label>
+        <br>
+        {% for categoria in categorias %}
+          <div class="cookie-row-form">
+            <div class="option-label">
+              <label class="switch">
+                <input type="checkbox" name="categorias" value="{{ categoria.id }}">
+                <span class="slider round"></span>
+              </label>
+              <span class="categoryName" style="color:black;" >{{ categoria.nombre }}</span>
+            </div>
+          </div>
+          <br>
+        {% endfor %}
+        <br>
+        <button type="submit" class="config-submit">Guardar configuración</button>
+      </form>
+    </div>
+  </div>
+</body>
+
+<script>
+  var form = document.getElementById('cookie-form');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+    var preferenciasCheckbox = document.querySelectorAll('input[name="preferencias"]:checked');
+    var preferenciasSeleccionadas = Array.from(preferenciasCheckbox).map(function(checkbox) {
+      return checkbox.value;
+    });
+
+    guardarPreferenciasCookies(preferenciasSeleccionadas);
+
+    alert('¡Configuración de cookies guardada con éxito!');
+  });
+
+  function guardarPreferenciasCookies(preferencias) {
+    var preferenciasJSON = JSON.stringify(preferencias);
+
+    document.cookie = "preferenciasCookies=" + preferenciasJSON + "; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
+  }
+</script>
+
+{% endblock %}

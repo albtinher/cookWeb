@@ -1,0 +1,39 @@
+{% extends 'bass.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cookies.css' %}">
+{% endblock %}
+
+
+{% block content %}
+   
+    <div class="container-cookies">
+      <div class="card">
+        <h1 style="font-size:40px;">¡Bienvenido a tu perfil, {{ request.user.username }}!</h1>
+        <p style="color:black; text-align:left;">Aquí puedes encontrar toda tu información como usuario:</p>
+        <div class="info">
+          <br>
+          <br>
+          <p style="color:black;"><span style="font-family:Montserrat-Bold;padding-right: 20px;">User Name:</span> {{ request.user.username }}</p>
+          <p style="color:black;"><span style="font-family:Montserrat-Bold;padding-right: 20px;">Nombre:</span> {{ request.user.first_name }}</p>
+          <p style="color:black;"><span style="font-family:Montserrat-Bold;padding-right: 20px;">Apellidos:</span> {{ request.user.last_name }}</p>
+          <p style="color:black;"><span style="font-family:Montserrat-Bold;padding-right: 20px;">Dirección de correo electrónico:</span> {{ request.user.email }}</p>      
+        </div>
+        <br>
+        <br>
+          <div class="links-container">
+            <a href="{% url 'edit_profile' %}" class="profile-submit editar">Editar perfil</a>
+            <a href="{% url 'configuraciones' %}" class="profile-submit config">Gestionar Configuraciones</a>
+            <a href="{% url 'LogOutPage' %}" class="profile-submit logout">Cerrar sesión</a>
+          </div>
+        <br>
+        <br>
+
+      </div>
+    </div>
+
+
+{% endblock %}

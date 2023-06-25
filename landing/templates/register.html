@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container-landing">
+        <div class="left-side">
+            <img src="{% static 'images/LogoRedondo.png' %}" alt="Logo">
+        </div>
+        <div class="right-side">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+
+
+            <h1 class="bold-text">Hi 👋🏽</h1>
+            <h1 class="bold-text">I'm CookBlock</h1>
+            <br>
+            <br>
+            <div class="formulario">
+                <form style="padding:20px 20px;" class="form-container" action="" method="POST">
+                {% csrf_token %}
+                <div class="form-fields">
+                  {% for field in formulario%}
+                    <div class="form-field">
+                      <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                      {{ field }}
+                    </div>
+                  {% endfor %}
+                {% comment %} {{formulario.as_table}} {% endcomment %}
+                <input type="submit" class="buttons login-button" style="    font-family: 'Montserrat-SemiBold', Arial, Helvetica; height: 44px; width: 164px; line-height:0px;" value="REGISTRARSE">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

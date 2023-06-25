@@ -1,0 +1,118 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CookBlock</title>
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mainmenu.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    {% block head %}
+    {% endblock %}
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark navbar-custom" style="background-color:#181818; height: 80px;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'images/logoHori.png' %}" alt="Logo" height="60" width="230px">
+            </a>
+            <div class="collapse navbar-collapse justify-content-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'cookies' %}">Configuración</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'websites' %}">Sitios Webs</a>
+                    </li>
+                    {% if user.is_authenticated and user.is_staff %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin:index' %}" target="_blank">Administrador</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="navbar-text" style="height: 60px; width: 230px; margin-right: 10px; margin-left: 40px;color: black;">
+                <div class="dropdown">
+                  <input style="display: none;" type="checkbox" id="dropdown">
+                  <label class="dropdown__face" for="dropdown">
+                    <div class="dropdown__text__Hi">Hi, {{ request.user.username }}</div>
+                    <div class="dropdown__arrow"></div>
+                  </label>
+                  <ul class="dropdown__items">
+                    <li><div><a class="dropdown__text" style="color:black; padding: 10px;" href="{% url 'profile' %}">Mi Perfil🤗</a></div></li>
+                    <li><div><a class="dropdown__text" style="color:#AB2346; padding: 10px;" href="{% url 'LogOutPage' %}">Cerrar Sesión</a></div></li>
+                  </ul>
+                </div>
+              </div>
+              <svg>
+                <filter id="goo">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                  <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                  <feBlend in="SourceGraphic" in2="goo" />
+                </filter>
+              </svg>
+              
+        </div>
+    </nav>
+
+
+    <main class="container-fluid">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+
+    <footer>
+        <div class="footer-dark">
+            <footer>
+                <div class="container-dark">
+                    <div class="row-dark">
+                        <div class="col-sm-6 col-md-3 item">
+                            <h3>Services</h3>
+                            <ul>
+                                <li><a href="#">Web design</a></li>
+                                <li><a href="#">Development</a></li>
+                                <li><a href="#">Hosting</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-3 item">
+                            <h3>About</h3>
+                            <ul>
+                                <li><a href="#">Company</a></li>
+                                <li><a href="#">Team</a></li>
+                                <li><a href="#">Careers</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 item text">
+                            <h3>CookBlock</h3>
+                            <p>Descubre una experiencia web libre de interrupciones y preocupaciones con nuestra extensión. Simplifica la configuración de cookies, protege tu privacidad y obtén información detallada sobre cada cookie que recibes. ¡No esperes más y únete a nuestra comunidad de usuarios!</p>
+                        </div>
+                        <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                    </div>
+                    <p class="copyright">CookBlock © 2023</p>
+                </div>
+            </footer>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    </footer>
+
+    <!-- Aquí puedes incluir tus scripts JavaScript -->
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

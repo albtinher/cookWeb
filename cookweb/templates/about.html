@@ -1,0 +1,51 @@
+{% extends 'bass.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+{% endblock %}
+
+{% block content %}
+
+  {% comment %} <link rel="stylesheet" href="{% static 'css/cookies.css' %}"> {% endcomment %}
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  
+    <div class="container-web"  >
+        <div class="left-sidew">
+            <h2 class="bold-text" style="margin-top:50px; font-size: 50px;">Cookblock: Controla tus cookies con facilidad
+
+            </h2>
+            <br>
+            <br>
+            <br>
+        </div>
+        <div class="left-sidew" style="padding: 40px 40px;">
+            <h3 class="bold-text" style="margin-top:50px; margin-bottom: 100px; font-family: 'Montserrat-Light'; font-size:25px;">
+                <p class="description" >
+                    Cookblock es una aplicación innovadora diseñada para ayudarte a tomar el control de tus cookies de manera sencilla. Con Cookblock, puedes administrar y personalizar la configuración de tus cookies según tus preferencias individuales. Ya no estarás limitado por las configuraciones predeterminadas y podrás decidir qué cookies aceptar y cuáles rechazar. Con Cookblock, protege tu privacidad y disfruta de una experiencia en línea personalizada.
+                  </p>
+                  <p class="description" style="padding-left: 40px;">
+                    Características principales de Cookblock:
+                  </p>
+                  <ul>
+                    <li>Personaliza tus ajustes de cookies de manera fácil y rápida.</li>
+                    <li>Gestiona tus preferencias de cookies según tus necesidades.</li>
+                    <li>Protege tu privacidad y controla la información que se recopila.</li>
+                    <li>Decide qué cookies aceptar y cuáles rechazar.</li>
+                    <li>Disfruta de una experiencia en línea personalizada y adaptada a tus preferencias.</li>
+                  </ul>
+                  <p class="description">
+                    Con Cookblock, toma el control total de tus cookies y navega por la web con confianza y tranquilidad.
+                  </p>
+                </div>
+            </h3>
+            {% comment %} <img src="{% static 'images/LogoRedondo.png' %}" alt="Logo"> {% endcomment %}
+            
+        </div>
+    </div>
+
+
+{% endblock %}
