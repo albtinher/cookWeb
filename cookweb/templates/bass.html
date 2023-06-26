@@ -32,26 +32,28 @@
                         <a class="nav-link" href="{% url 'about' %}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'cookies' %}">Cookies</a>
+                        <a class="nav-link" href="{% url 'cookies' %}">Configuración</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'websites' %}">Sitios Webs</a>
                     </li>
+                    {% if user.is_authenticated and user.is_staff %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin:index' %}" target="_blank">Administrador</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
             <div class="navbar-text" style="height: 60px; width: 230px; margin-right: 10px; margin-left: 40px;color: black;">
                 <div class="dropdown">
-                  <input type="checkbox" id="dropdown">
+                  <input style="display: none;" type="checkbox" id="dropdown">
                   <label class="dropdown__face" for="dropdown">
                     <div class="dropdown__text__Hi">Hi, {{ request.user.username }}</div>
                     <div class="dropdown__arrow"></div>
                   </label>
                   <ul class="dropdown__items">
                     <li><div><a class="dropdown__text" style="color:black; padding: 10px;" href="{% url 'profile' %}">Mi Perfil🤗</a></div></li>
-                    {% comment %} <li>😺</li> {% endcomment %}
                     <li><div><a class="dropdown__text" style="color:#AB2346; padding: 10px;" href="{% url 'LogOutPage' %}">Cerrar Sesión</a></div></li>
-                    {% comment %} <li>😎</li>
-                    <li>🤗</li> {% endcomment %}
                   </ul>
                 </div>
               </div>

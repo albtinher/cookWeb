@@ -9,21 +9,17 @@
 {% endblock %}
 
 {% block content %}
-  <link rel="stylesheet" href="{% static 'css/cookies.css' %}">
-
-
   <div class="container-cookies">
-      <div class="card">
-          <h1>Editar perfil</h1>
+    <div class="card">
+      <h1 class="edit-profile-title">Editar perfil</h1>
 
-          <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            {{ password_form.as_p }}
-            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-            <a href="{% url 'profile' %}" class="btn btn-secondary">Cancelar</a>
-          </form>  
-      </div>
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ password_form.as_p }}
+        <button type="submit" class="config-submit">Guardar Cambios</button>
+        <a href="{% url 'profile' %}" class="profile-submit config">Cancelar</a>
+      </form>
+    </div>
   </div>
-
 {% endblock %}

@@ -30,7 +30,7 @@ class ChangePasswordForm(PasswordChangeForm):
 class CookieConfigurationForm(forms.ModelForm):
     class Meta:
         model = ConfiguracionCookie
-        fields = ['nombre', 'preferencias']
+        fields = ['nombre', 'categoriasActivas']
         
         
         

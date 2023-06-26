@@ -8,13 +8,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            // Agregar input
-            $('#addUrl').click(function(e) {
-                e.preventDefault();
-                var inputCount = $('.urlInput').length;
-                var newInput = '<div class="urlInputDiv"><input type="text" class="urlInput" name="url_' + inputCount + '"><button type="button" class="removeUrl">Eliminar</button></div>';
-                $('.urlInputs').append(newInput);
-            });
 
             // Eliminar input
             $(document).on('click', '.removeUrl', function() {
@@ -25,29 +18,34 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container-websites">
-        <h1>Sitios Webs Permitidos</h1>
+    <div class="container-cookies">
+        <div class="card" style="background-color: #fff; align-items: center; padding: 40px; margin-left: 200px; margin-right: 200px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+            <h1 style="font-size: 40px; color: black; text-align: center;">Sitios Webs Permitidos</h1>
+            <br>
 
-        <div class="formUrls">
-            <form method="post">
-                {% csrf_token %}
-                <div class="urlInputs">
-                    <div class="urlInputDiv">
-                        <input type="text" class="urlInput" name="url_0">
-                        <button type="button" class="removeUrl">Eliminar</button>
+            <div class="formUrls">
+                <form method="post" action="{% url 'websites' %}" style="display: flex !important; flex-direction: column; align-items: center;">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="config-submit">Guardar URL</button>
+                </form>
+                
+                <ul style="margin-top:50px;">
+                    <div class="container-urls">
+                        {% for url in urls %}
+                            <div class="list-item">
+                                <li style="margin-bottom: 5px; background-color: white; padding: 5px; border-radius: 5px; width: 80vh;">{{ url.url }}</li>
+                                <form method="post" action="{% url 'delete_website' url.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="website-submit-delete">Eliminar</button>
+                                </form>
+                            </div>
+                        {% empty %}
+                            <li class="livacio" style="font-family:Montserrat-ExtraBold;">No se han agregado URLs</li>
+                        {% endfor %}
                     </div>
-                </div>
-                <button id="addUrl" type="button">Agregar URL</button>
-                <button type="submit">Guardar URLs</button>
-            </form>
-
-            <ul>
-                {% for url in urls %}
-                    <li>{{ url.url }}</li>
-                {% empty %}
-                    <li>No se han agregado URLs</li>
-                {% endfor %}
-            </ul>
+                </ul>
+            </div>
         </div>
     </div>
 {% endblock %}
