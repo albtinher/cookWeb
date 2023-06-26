@@ -196,3 +196,24 @@
   }
 
     
+  .helptext {
+    font-size: 1px;
+    color: #ffffff;
+  }
+
+  form label {
+    /* Estilos de tipografía personalizados */
+    font-family: 'Montserrat-Bold';
+    font-size: 16px;
+    /* Otros estilos deseados */
+  }
+
+  form input {
+    width: 300px;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #FFF 0%, #A69CDC 100%);    
+    padding: 10px;
+    outline: none;
+    color: black;
+  }
+  
