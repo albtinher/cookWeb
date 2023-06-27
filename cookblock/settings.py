@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-rkk_5w5afet6y9z8wv8baq-)fy@mx(7a_rxuo&xfxq*+g(&*&%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'cookblock.azurewebsites.net/']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'cookblock.azurewebsites.net']
 
 
 
